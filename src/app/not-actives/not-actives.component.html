@@ -1,0 +1,25 @@
+<ul class="list-group">
+  <div *ngFor="let item of posts" class="w-50 mx-auto my-2">
+    <div *ngIf="!item.active">
+      <div
+        class="card"
+        [ngClass]="{
+          'bg-warning': item.type === 'news',
+          'bg-dark text-white': item.type === 'politic',
+          'bg-info': item.type === 'education'
+        }"
+      >
+        <div class="card-header text-start">
+          Post con ID #{{ item.id }} di tipo {{ item.type }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-start">{{ item.title }}</h5>
+          <p class="card-text text-start">{{ item.body }}</p>
+          <button type="button" class="btn btn-success" (click)="addPost(item)">
+            Attiva
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ul>
